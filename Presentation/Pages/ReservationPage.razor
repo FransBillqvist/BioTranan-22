@@ -1,0 +1,65 @@
+@page "/Reservation/{Id:int}"
+@using Domain.Entity
+@using System.Text.Json
+@inject HttpClient _client
+@inject NavigationManager _navigationManager
+
+@if (show == null)
+{
+    <p>ingen data här</p>
+}
+else
+{
+    <b></b>@show.Movie.Title
+    <p>@show.Movie.Plot</p>
+    <p>@show.Movie.Country</p>
+    <p>@show.Movie.Native</p>
+    <p>@show.Movie.Texted</p>
+    <p>@show.Movie.Rating</p>
+    @* <p>@show.Movie.Plot</p>
+        <p>@show.Movie.Plot</p> *@
+
+
+    <EditForm Model="reservation" OnValidSubmit="@POSTReservation">
+        <InputText @bind-Value="reservation.Email" placeholder="Email.com" />
+        <InputNumber min="1" max="@show.AvailbleSeats" @bind-Value="reservation.SeatsBooked" placeholder="1" />
+        <button class="btn btn-primary" type="submit">Boka din biljett</button>
+    </EditForm> @_error
+    <p>Totalpris: @TotalPrice</p>
+}
+
+@code {
+
+    [Parameter]
+    public int Id { get; set; }
+    public int TotalPrice { get { return reservation.SeatsBooked * show.Price; } }
+    Reservation reservation = new Reservation();
+    Show show;
+    string _error = "";
+    @* Info = await _client.GetAsync("/Reservation/showId"); *@
+    protected override async Task OnInitializedAsync()
+    {
+        Console.WriteLine("Halllå=!");
+        show = await _client.GetFromJsonAsync<Show>($"https://localhost:7054/Show/{Id}");
+    }
+
+    protected async Task POSTReservation()
+    {
+        if (reservation.SeatsBooked <= show.AvailbleSeats)
+        {
+
+            reservation.ShowId = show.Id;
+            reservation.show = show;
+            var response = await _client.PostAsJsonAsync("https://localhost:7054/Reservation", reservation);
+            reservation = await response.Content.ReadFromJsonAsync<Reservation>();
+            _navigationManager.NavigateTo(reservation.url);
+        }
+        else
+        {
+            _error = "Du kan inte köpa så många biljetter";
+
+        }
+    }
+}
+
+<PageTitle>Reservera plats på </PageTitle>

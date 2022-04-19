@@ -4,7 +4,7 @@ Obligatorisk **självständig** inlämningsuppgift för BY-SUVNET OOP2
 ### Betygsgränser
 För G
 * Minst 3 av 3 krav för hemsidan
-* Minst 6 av 7 krav för REST-APIet
+* Minst 6 av 7 krav för REST-APIet (Y)
 * Minst 2 av 3 systemregler
 
 För VG
@@ -20,34 +20,34 @@ För VG
 Du har fått i uppdrag att ta fram Bio Tranans nya hemsida! Bio Tranan är en liten ideelt driven biograf som visar ett mindre antal filmer.
 
 Bio Tranan vill ha två saker, dels en publik hemsida där besökare skall kunna:
-- [ ] Se schemat för kommande visningar
-- [ ] Reservera platser på visningar
-- [ ] Få grundläggande information om filmerna som ska visas
+- [x] Se schemat för kommande visningar
+- [x] Reservera platser på visningar
+- [x] Få grundläggande information om filmerna som ska visas
 
 Utöver detta vill Bio Tranan, som drivs av erfarna utvecklare, ha ett REST API som kan fungera som administationsverktyg (i framtiden tänkte de skriva sin egen frontend för detta). REST API:et skall kunna:
-- [ ] Lägga till nya filmer
-- [ ] Ta bort filmer
-- [ ] Lägga till nya salonger med ett visst antal platser
-- [ ] Lägga till nya visningar i schemat
-- [ ] Hämta hem schemat för alla visningar
-- [ ] Lista alla reservationer
-- [ ] Lista alla reservationer för en viss visning
+- [x] Lägga till nya filmer
+- [x] Ta bort filmer
+- [x] Lägga till nya salonger med ett visst antal platser
+- [x] Lägga till nya visningar i schemat
+- [x] Hämta hem schemat för alla visningar
+- [x] Lista alla reservationer
+- [x] Lista alla reservationer för en viss visning
 
 Regler för systemet:
-- [ ] En film får bara visas ett visst antal gånger. Det skall alltså inte gå att lägga till en film i schemat för visningar, om den redan visats max antal gånger.
+- [x] En film får bara visas ett visst antal gånger. Det skall alltså inte gå att lägga till en film i schemat för visningar, om den redan visats max antal gånger.
 - [ ] Det ska inte gå att lägga till en filmvisning i schemat samma tid som en annan film visas i en viss salong
-- [ ] Det skall inte gå att reservera platser på en visning om det inte finns tillräckligt många platser kvar
+- [x] Det skall inte gå att reservera platser på en visning om det inte finns tillräckligt många platser kvar
 
 ## Utöver dessa krav finns några extra VG-krav
 
 Hemsidan:
-- [ ] Visa det totala priset innan reservationen läggs (se bild)
+- [x] Visa det totala priset innan reservationen läggs (se bild)
 - [ ] Det skall gå att avboka en reservation
 - [ ] Använd ett externt api till något på hemsidan, exempelvis ett random advice från https://api.adviceslip.com/, eller mer avancerat: https://developers.themoviedb.org/3/getting-started/introduction
 - [ ] Reviews! Det skall gå att poängsätta filmer samt ge dem ett skriftligt omdöme genom att ange sin reservationskod, men bara efter att filmen visats.
 
 REST-API
-- [ ] Skapa en ny reservation
+- [x] Skapa en ny reservation
 - [ ] Det skall gå att lägga tillfälliga platsrestriktioner på en viss visning, utifall det blir nya pandemi-regler i höst
 - [ ] Kräv autentisering för att kunna användas (Valfri metod)
 

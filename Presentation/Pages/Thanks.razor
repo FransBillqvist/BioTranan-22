@@ -1,0 +1,24 @@
+@page "/thanks/{Id:int}"
+@using Domain.Entity
+@inject HttpClient _client
+@if(reservation == null)
+{
+    <p>Laddar vänlig vänta</p>
+}
+else
+{
+    <h3>Tack för din reservation</h3>
+    <p>Här är din reservationskod: @reservation.ReservationCode</p>
+}
+
+@code
+{
+    [Parameter]
+    public int Id { get; set; }
+    Reservation reservation;
+
+        protected override async Task OnInitializedAsync()
+        {
+            reservation = await _client.GetFromJsonAsync<Reservation>($"https://localhost:7054/Reservation/{Id}");
+        }
+}

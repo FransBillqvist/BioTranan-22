@@ -1,9 +1,8 @@
-namespace Domain.Entity;
+namespace API.DTOs;
 
-public class Saloon
+public class UpdateSaloon
 {
-    public int Id { get; set; }
-    public string? Name { get; set; }
+     public string? Name { get; set; }
     public int Seats { get; set; } = 45;
     //The time at a given date the first movie can be shown
     public int OpenFrom { get; set; } = 1000;

@@ -1,0 +1,51 @@
+﻿@page "/Schema"
+@using Domain.Entity
+@using System.Text.Json
+@inject NavigationManager _navigationManager
+@inject HttpClient _client
+
+
+
+
+<PageTitle>Kommande visningar</PageTitle>
+@if(Shows == null)
+{
+    <p>Inga visningar är lagda</p>
+}
+else 
+{
+   
+        @foreach (var show in Shows)
+        {
+            
+                
+                <div><h2>@show.Movie.Title</h2> 
+
+                <NavLink class="btn btn-primary" href="@show.url"><b>Boka</b> </NavLink> Pris: @show.Price
+                <p>Lediga platser:</p> @show.AvailbleSeats av @show.Saloon.Seats</div>
+
+
+                <h4>@show.showDate @show.showTime</h4> 
+                <p><b>Plot:</b> @show.Movie.Plot</p>
+                <p><b>Genre:</b> @show.Movie.Genre</p>
+                <p><b>Time:</b> @show.Movie.Runtime <b>Mins</b></p>
+                <p><b>Pris:</b> @show.Price</p>
+            
+        } 
+    
+    } 
+@code{
+    
+    @* public IEnumerable<Movie>? Movies; *@
+    public IEnumerable<Show>? Shows;
+
+        protected override async Task OnInitializedAsync()
+        {
+            Shows = await _client.GetFromJsonAsync<IEnumerable<Show>>("https://localhost:7054/Show");
+            @* Movies = await _client.GetFromJsonAsync<IEnumerable<Movie>>("https://localhost:7054/Movie"); *@
+            
+        }
+    
+    
+    
+}

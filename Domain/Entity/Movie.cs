@@ -1,4 +1,6 @@
-﻿namespace Domain.Entity;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace Domain.Entity;
 public class Movie
 {
     public int Id { get; set; }
@@ -14,5 +16,20 @@ public class Movie
     public string? Country { get; set; }
     public string? Plot { get; set; }
     public int NumberOfUses { get; set; } = 5;
+    public int BookedUses { get; set; } = 0;
+    // public List<Review>? Reviews { get; set; }
+
+    public bool IsANewBookingAllowed()
+    {
+        if (NumberOfUses > BookedUses)
+        {
+            BookedUses++;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 
 }
