@@ -1,7 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
 using Domain.Entity;
-using System.Threading.Tasks;
-using System.Collections.Generic;
 using Domain.Infrastructure.Data;
 using API.DTOs;
 using Microsoft.EntityFrameworkCore;
@@ -42,8 +40,6 @@ public class SaloonController : Controller
     [HttpGet("{id}")]
     public async Task<ActionResult<Saloon>> GetSaloonById(int id)
     {
-
-        //later add id string and decrypt it to int.
         var result = await _context.Saloons.FindAsync(id);
         if(result == null)
         {
@@ -52,6 +48,7 @@ public class SaloonController : Controller
 
         return Ok(result);
     }
+
     [HttpPut("{id}")]
     public async Task<ActionResult<Saloon>> UpdateSaloonById(int id, [FromBody] UpdateSaloon saloon)
     {
@@ -69,6 +66,7 @@ public class SaloonController : Controller
         await _context.SaveChangesAsync();
         return Ok(saloon);
     }
+
     [HttpDelete("{id}")]
     public async Task<ActionResult<Saloon>> DeleteSaloonById(int id)
     {
@@ -81,5 +79,4 @@ public class SaloonController : Controller
         await _context.SaveChangesAsync();
         return Ok(result);
     }
-
 }
