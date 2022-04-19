@@ -35,7 +35,7 @@ Utöver detta vill Bio Tranan, som drivs av erfarna utvecklare, ha ett REST API 
 
 Regler för systemet:
 - [x] En film får bara visas ett visst antal gånger. Det skall alltså inte gå att lägga till en film i schemat för visningar, om den redan visats max antal gånger.
-- [ ] Det ska inte gå att lägga till en filmvisning i schemat samma tid som en annan film visas i en viss salong
+- [x] Det ska inte gå att lägga till en filmvisning i schemat samma tid som en annan film visas i en viss salong
 - [x] Det skall inte gå att reservera platser på en visning om det inte finns tillräckligt många platser kvar
 
 ## Utöver dessa krav finns några extra VG-krav
